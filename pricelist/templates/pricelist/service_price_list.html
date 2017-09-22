@@ -1,0 +1,34 @@
+{% extends 'pricelist/base.html' %}
+{% load staticfiles %}
+ {% block content %}
+      <div class="price-promo">
+        <div class="header ">
+          <span class="pre-header">О нас</span>
+          <h2 class="price-header-field">П<span class="price-page-header-decor">рай</span>с на услуги</h2>
+        </div>
+        <a href="{% url 'production_price_list' %}" class="btn btn-price" alt="Связаться">Прайс на детали</a>
+      </div>
+    <section>
+      {% for c in categories %}
+      <h3 class="product_category">{{c.title}}</h3>
+      <table class="service-table">
+        <thead>
+           <tr>
+               <th>Наименование работ</th>
+               <th>Стоимость работ по разовым договорам в рабочие дни	</th>
+               <th>Стоимость работ по разовым договорам в выходные и праздничные дни	</th>
+           </tr>
+       </thead>
+           {% for item in price %}
+           {% if item.type_s == c %}
+           <tr>
+               <td>{{item.title}}</td>
+               <td>{{item.cost}}</td>
+               <td>{{item.cost_weekend}}</td>
+           </tr>
+           {% endif %}
+           {% endfor %}
+       </table>
+    {% endfor %}
+    </section>
+{% endblock %}

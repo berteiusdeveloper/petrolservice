@@ -1,0 +1,64 @@
+@media screen and (max-width: 1080px){
+
+  h1 {
+    font-size: 4rem;
+  }
+  .about-us-text {
+    width: 100%
+  }
+  .about-us-image {
+    display: none;
+  }
+  .main-nav{
+    display: none;
+  }
+  .menu{
+    position: relative;
+    top: 50px;
+    margin-right: 5%;
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+    text-align: right;
+  }
+  .service-price, .detail-price{
+    width: 100%;
+    padding-top: 20px;
+  }
+  .contact-form {
+    width: 100%
+  }
+
+  .map, .contacts {
+    width: 50%
+  }
+  .form{
+    width: 100%;
+  }
+  .service-items .service-item{
+    width: 100%;
+  }
+}
+
+
+
+@media screen and (max-width: 780px) {
+  .logo {
+    width: 280px;
+  }
+
+  .map, .contacts {
+    width: 100%;
+  }
+  .header-contacts li  {
+      text-align: center;
+  }
+  .header-contacts li  {
+      width: 100%;
+      text-align: center;
+  }
+  .service-price, .detail-price{
+      min-height: 400px;
+  }
+
+}

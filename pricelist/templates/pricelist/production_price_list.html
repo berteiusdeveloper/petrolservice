@@ -1,0 +1,43 @@
+{% extends 'pricelist/base.html' %}
+{% load staticfiles %}
+ {% block content %}
+      <div class="price-promo">
+
+        <div class="header">
+          <span class="pre-header">Прайс-лист</span>
+          <h2 class="price-header-field">Прайс-лист <span class="about-us-header-decor">на д</span>етали</h2>
+          <a href="{% url 'service_price_list' %}" class="btn btn-price" alt="Связаться">Прайс на услуги</a>
+        </div>
+      </div>
+    <section>
+      {% for c in categories %}
+      <div class="product_info">
+        <div class="head-image">
+          <img class="cat-image" src="/media/{{c.img}}" alt="{{c.img}}" >
+        </div>
+        <div class="prod-info">
+          <h3 class="product_category">{{c.title}}</h3>
+          <p class="">{{c.info}}</p>
+        </div>
+      </div>
+
+      <table>
+           <tr>
+               <th>№ п/п</th>
+               <th>Наименование продукции</th>
+               <th>Цена</th>
+           </tr>
+           {% for item in price %}
+           {% if item.type_p == c %}
+           <tr>
+               <td>{{item.item_no}}</td>
+               <td>{{item.title}}</td>
+               <td>{{item.cost}}</td>
+           </tr>
+           {% endif %}
+           {% endfor %}
+       </table>
+    {% endfor %}
+    </section>
+
+{% endblock %}

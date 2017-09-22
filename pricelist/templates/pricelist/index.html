@@ -1,0 +1,97 @@
+{% extends 'pricelist/base.html' %}
+{% load staticfiles %}
+ {% block content %}
+ <div class="promo ">
+     <h1 class="animated fadeInUp">Сервисное обслуживание и ремонт АЗС </br> Продажа ТРК и запасных частей</h1>
+     <a href="#" class="btn animated fadeInUp" alt="Связаться">Связаться</a>
+ </div>  
+<section class="about-us" id="about-us">
+  <div class="header">
+    <span class="pre-header">О нас</span>
+    <h2 class="header-field">Наша <span class="about-us-header-decor">ком</span>пания</h2>
+  </div>
+  <div class="about-us-content">
+  <div class="about-us-text">
+    <p>Компания ООО «АЗС-Сервис» основана апреля 2006 года.
+    За время работы мы наладили деловые надежные связи с
+     компаниями-производителями оборудования для АЗС и нефтебаз,
+      являющимися лидерами в этом сегменте рынка. Благодаря грамотной логистике,
+      нам удаётся отслеживать весь процесс поставок оборудования, начиная от первого
+      общения с потенциальным клиентом и заканчивая доставкой оборудования на объект
+      заказчика и проведение пуско-наладочных работ.
+    </p>
+    <p>
+ООО «АЗС-Сервис»предлагает Вам оборудование для АЗС:
+топливораздаточные колонки, запасные части и комплектующие к ним,
+а так же широкий спектр метрологического, резервуарного и электронного
+оборудования для оснащения автозаправочных станций и много другое.
+    </p>
+  </div>
+  <div class="about-us-image">
+    <div class="image-decor"></div>
+    <img class="ab-image"alt="О наc" src="{% static 'img/about-us-img2.png' %} ">
+  </div>
+</div>
+</section>
+<div class="service" id="service">
+  <div class="header">
+    <span class="pre-header">О нас</span>
+    <h2 class="header-field"><span class="service-header-decor">Наши</span> услуги</h2>
+  </div>
+  <div class="service-items">
+    <div class="service-item">
+      <img src="{% static 'img/item-icon1.png'%}" alt="icon">
+      <div class="text-item">
+        <h3>Ремонт, настройка, подключение и запуск</h3>
+        <p>любых топливозаправочных колонок (трк)</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <img src="{% static 'img/item-icon2.png'%}" alt="icon">
+      <div class="text-item">
+        <h3>Ремонт</h3>
+        <p>электронных и механических счетных устройств</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <img src="{% static 'img/item-icon3.png'%} " alt="icon">
+      <div class="text-item">
+        <h3>Ремонт</h3>
+        <p>контроллеров и пультов управления трк</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <img src="{% static 'img/item-icon4.png'%} " alt="icon">
+      <div class="text-item">
+        <h3>Ремонт</h3>
+        <p>всех модификаций насосов для перекачки нефтепродуктов</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <img src="{% static 'img/item-icon5.png'%}" alt="icon">
+      <div class="text-item">
+        <h3>Продажа</h3>
+        <p>ТРК новых и Б\У, обслуживание, гарантия</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <img src="{% static 'img/item-icon6.png'%} " alt="icon">
+      <div class="text-item">
+        <h3>Продажа</h3>
+        <p>комплектующих, нара, альфа, гамма, TOKICO и др.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="price" id="price">
+  <div class ="service-price">
+    <h2 class="blue-head">Прайс на услуги</h2>
+    <a href="{% url 'service_price_list' %}" class="btn" alt="Прайс на услуги">Прайс на услуги</a>
+  </div>
+  <div class="detail-price">
+    <h2 class="white-head">Прайс на з<span class="price-header-decor">апчаст</span>и</h2>
+    <a href="{% url 'production_price_list' %}" class="btn btn-gold" alt="Прайс на запчасти">Прайс на запчасти</a>
+  </div>
+</div>
+ {% endblock %}

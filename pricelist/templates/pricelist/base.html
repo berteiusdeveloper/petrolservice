@@ -1,0 +1,145 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>АЗС-СЕРВИС</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+      <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%} ">
+  </head>
+  <body>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %} "></script>
+    <script>
+      $("body").on('click', '[href*="#"]', function(e){
+        var fixed_offset = 0;
+        $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
+        e.preventDefault();
+      });
+    </script>
+    <script>
+      $(function(){
+      $('.navbar-toggle, nav').click(function(){
+        $('.navbar-toggle').toggleClass('navbar-on');
+        $('nav').fadeToggle();
+        $('nav').removeClass('nav-hide');
+      });
+    });
+    </script>
+    <header>
+      <nav class="nav-hide">
+        <ul>
+          <li><a href="{% url 'index' %}#about-us">О нас</a></li>
+          <li><a href="{% url 'index' %}#service">Услуги</a></li>
+          <li><a href="{% url 'index' %}#price">Прайс-лист</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="#contacts-comp">Оставить заявку</a></li>
+        </ul>
+      </nav>
+          <ul class="header-contacts">
+            <li><i class="fa fa-map-o"></i> г. Томск, ул. Пролетарская, д.57 к. А</li>
+            <li><i class="fa fa-calendar"></i>  Пн-вс 8.00 - 22.00</li>
+            <li><i class="fa fa-phone"></i>  +7 913 820 94 81</li>
+            <li><i class="fa fa-phone"></i> kb-service@sibmail.com</li>
+          </ul>
+          <div class="header-middle">
+              <div class="header-logo">
+                <a href="{% url 'index' %}" ><img class="logo" src="{% static 'img/logo-black1.png' %}" alt="АЗС-СЕРВИС" ></a>
+              </div>
+              <ul class="main-nav">
+                <li><a href="{% url 'index' %}#about-us">О нас</a></li>
+                <li><a href="{% url 'index' %}#service">Услуги</a></li>
+                <li><a href="{% url 'index' %}#price">Прайс-лист</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#contacts-comp">Оставить заявку</a></li>
+              </ul>
+              <a href="#" class="menu navbar-toggle"><i class="fa fa-bars fa-2x"></i></a>
+          </div>
+
+
+    </header>
+    <main>
+
+      {% block content %}
+      {% endblock %}
+
+    <div class="contact-us" id="contacts">
+      <div class="header">
+        <span class="pre-header">Контакты</span>
+        <h2 class="header-field">Свяжитесь <span class="about-us-header-decor">с на</span>ми</h2>
+      </div>
+      <div class="map-contact">
+      <div class ="map" id="map"></div>
+      <div class ="contacts" id="contacts-comp">
+        <ul>
+          <li>
+            <i class="fa fa-map-o"></i>
+            <div class="contact-item">
+              <p><b>Адрес</b></p>
+              <p>г. Томск, ул. Пролетарская, д.57 к. А</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-map-o"></i>
+            <div class="contact-item">
+              <p><b>Email</b></p>
+              <p>kb-service@sibmail.com</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-map-o"></i>
+            <div class="contact-item">
+              <p><br>Часы работы:</br></p>
+              <p>Пн-вс 8.00 - 22.00</p>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-map-o"></i>
+            <div class="contact-item">
+              <p><br>Телефон</br></p>
+              <p>Пн-вс 8.00 - 22.00</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form">
+        <form class='form' method="POST" action="{% url 'send_email' %}"> {% csrf_token %}
+          <label for="name-field">Имя</label>
+          <input class='text-input' type="text" id="name-field" name="subject"></input>
+          <label for="phone-field">Телефон</label>
+          <input class='text-input' type="text" id="phone-field" name="message"></input>
+          <label for="mail-field">Email</label>
+          <input class='text-input' type="text" id="mail-field" name="from_email"></input>
+          <label for="text-area-field">Сообщение</label>
+          <textarea class='text-input' id="text-area-field" name="message"></textarea>
+          <input class="button form-button"type="submit" value="Отправить"></input>
+        </form>
+    </div>
+  </div>
+</div>
+    </main>
+    <div class="footer">
+
+    </div>
+
+
+    <script>
+        function initMap() {
+          var uluru = {lat: -25.363, lng: 131.044};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+        }
+      </script>
+
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyv5SR7lkO2RJgHNbFXmcLjH8W1MIsaY4&callback=initMap">
+      </script>
+  </body>
+</html>
