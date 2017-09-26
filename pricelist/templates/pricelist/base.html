@@ -32,37 +32,33 @@
           <li><a href="{% url 'index' %}#about-us">О нас</a></li>
           <li><a href="{% url 'index' %}#service">Услуги</a></li>
           <li><a href="{% url 'index' %}#price">Прайс-лист</a></li>
+          <li><a href="#contacts-comp">Контакты</a></li>
+          <li><a href="#contacts">Оставить заявку</a></li>
+        </ul>
+      </nav>
+      <ul class="header-contacts">
+          <li><i class="fa fa-map-o"></i> г. Томск, ул. Пролетарская, д.57 к. А</li>
+          <li><i class="fa fa-calendar"></i>  Пн-вс 8.00 - 22.00</li>
+          <li><i class="fa fa-phone"></i>  +7 913 820 94 81</li>
+          <li><i class="fa fa-phone"></i> kb-service@sibmail.com</li>
+      </ul>
+      <div class="header-middle">
+        <div class="header-logo">
+          <a href="{% url 'index' %}" ><img class="logo" src="{% static 'img/logo-black1.png' %}" alt="АЗС-СЕРВИС" ></a>
+        </div>
+        <ul class="main-nav">
+          <li><a href="{% url 'index' %}#about-us">О нас</a></li>
+          <li><a href="{% url 'index' %}#service">Услуги</a></li>
+          <li><a class="multi-nav"href="{% url 'index' %}#price">Прайс-лист</a></li>
           <li><a href="#contacts">Контакты</a></li>
           <li><a href="#contacts-comp">Оставить заявку</a></li>
         </ul>
-      </nav>
-          <ul class="header-contacts">
-            <li><i class="fa fa-map-o"></i> г. Томск, ул. Пролетарская, д.57 к. А</li>
-            <li><i class="fa fa-calendar"></i>  Пн-вс 8.00 - 22.00</li>
-            <li><i class="fa fa-phone"></i>  +7 913 820 94 81</li>
-            <li><i class="fa fa-phone"></i> kb-service@sibmail.com</li>
-          </ul>
-          <div class="header-middle">
-              <div class="header-logo">
-                <a href="{% url 'index' %}" ><img class="logo" src="{% static 'img/logo-black1.png' %}" alt="АЗС-СЕРВИС" ></a>
-              </div>
-              <ul class="main-nav">
-                <li><a href="{% url 'index' %}#about-us">О нас</a></li>
-                <li><a href="{% url 'index' %}#service">Услуги</a></li>
-                <li><a href="{% url 'index' %}#price">Прайс-лист</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-                <li><a href="#contacts-comp">Оставить заявку</a></li>
-              </ul>
-              <a href="#" class="menu navbar-toggle"><i class="fa fa-bars fa-2x"></i></a>
-          </div>
-
-
+        <a href="#" class="menu navbar-toggle"><i class="fa fa-bars fa-2x"></i></a>
+      </div>
     </header>
     <main>
-
       {% block content %}
       {% endblock %}
-
     <div class="contact-us" id="contacts">
       <div class="header">
         <span class="pre-header">Контакты</span>
@@ -89,14 +85,14 @@
           <li>
             <i class="fa fa-map-o"></i>
             <div class="contact-item">
-              <p><br>Часы работы:</br></p>
+              <p><b>Часы работы:</b></p>
               <p>Пн-вс 8.00 - 22.00</p>
             </div>
           </li>
           <li>
             <i class="fa fa-map-o"></i>
             <div class="contact-item">
-              <p><br>Телефон</br></p>
+              <p><b>Телефон</b></p>
               <p>Пн-вс 8.00 - 22.00</p>
             </div>
           </li>
@@ -119,16 +115,16 @@
   </div>
 </div>
     </main>
-    <div class="footer">
-
-    </div>
+    <footer class="footer">
+      <p>Copyright © 2017 АЗС-СЕРВИС</p>
+    </footer>
 
 
     <script>
         function initMap() {
-          var uluru = {lat: -25.363, lng: 131.044};
+          var uluru = {lat: 56.5162575, lng: 84.949363};
           var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
+            zoom: 15,
             center: uluru
           });
           var marker = new google.maps.Marker({

@@ -2,9 +2,11 @@
 {% load staticfiles %}
  {% block content %}
  <div class="promo ">
-     <h1 class="animated fadeInUp">Сервисное обслуживание и ремонт АЗС </br> Продажа ТРК и запасных частей</h1>
-     <a href="#" class="btn animated fadeInUp" alt="Связаться">Связаться</a>
- </div>  
+     <div class="hb">
+       <h1 class="animated fadeInUp">Сервисное обслуживание и ремонт АЗС </br> Продажа ТРК и запасных частей</h1>
+       <a href="#contacts" class="btn animated fadeInUp" alt="Связаться">Связаться</a>
+     </div>
+ </div>
 <section class="about-us" id="about-us">
   <div class="header">
     <span class="pre-header">О нас</span>
@@ -90,8 +92,8 @@
     <a href="{% url 'service_price_list' %}" class="btn" alt="Прайс на услуги">Прайс на услуги</a>
   </div>
   <div class="detail-price">
-    <h2 class="white-head">Прайс на з<span class="price-header-decor">апчаст</span>и</h2>
-    <a href="{% url 'production_price_list' %}" class="btn btn-gold" alt="Прайс на запчасти">Прайс на запчасти</a>
+    <h2 class="white-head">Прайс на запчасти</h2>
+    <a href="{% url 'production_price_list' %}" class="btn" alt="Прайс на запчасти">Прайс на запчасти</a>
   </div>
 </div>
  {% endblock %}

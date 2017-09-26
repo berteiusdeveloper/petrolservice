@@ -21,12 +21,14 @@
         </div>
       </div>
 
-      <table>
+      <table class="service-table">
+        <thead>
            <tr>
                <th>№ п/п</th>
                <th>Наименование продукции</th>
                <th>Цена</th>
            </tr>
+        </thead>
            {% for item in price %}
            {% if item.type_p == c %}
            <tr>
