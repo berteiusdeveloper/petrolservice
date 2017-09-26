@@ -2,15 +2,15 @@ from django.db import models
 
 class ProductCategory(models.Model):
     item_no = models.IntegerField()
-    title = models.CharField(max_length=300, default='Измеритель объема')
-    info = models.CharField(max_length=600, default='Измеритель объема. Важная деталь ТРК. Служит для определения выдаваемого количества (дозы, объема) топлива.Большинство объемомеров – поршневого типа.')
+    title = models.CharField(max_length=300, default='')
+    info = models.CharField(max_length=600, default='', blank=True)
     img = models.ImageField(upload_to='product', blank=True)
     def __str__(self):
         return self.title
 
 class ServiceCategory(models.Model):
     item_no = models.IntegerField()
-    title = models.CharField(max_length=300, default='Газоотделитель')
+    title = models.CharField(max_length=300, blank=True)
     def __str__(self):
         return self.title
 

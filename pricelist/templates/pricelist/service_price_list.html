@@ -10,6 +10,7 @@
       </div>
     <section>
       {% for c in categories %}
+
       <h3 class="product_category">{{c.title}}</h3>
       <table class="service-table">
         <thead>
@@ -29,6 +30,7 @@
            {% endif %}
            {% endfor %}
        </table>
+  
     {% endfor %}
     </section>
 {% endblock %}
