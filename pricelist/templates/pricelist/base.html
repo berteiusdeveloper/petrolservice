@@ -5,14 +5,17 @@
     <title>АЗС-СЕРВИС</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-      <link rel="stylesheet" href="{% static 'css/animate.css'%}">
-      <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%} ">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%} ">
   </head>
-  <body>
+  <body id="body">
     <script src="{% static 'js/jquery-3.2.1.min.js' %} "></script>
     <script>
       $("body").on('click', '[href*="#"]', function(e){
-        var fixed_offset = 0;
+        var fixed_offset,
+        scroll=$(window).scrollTop();
+        fixed_offset = 240;
+        if (scroll >=40) fixed_offset = 120;
         $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 1000);
         e.preventDefault();
       });
@@ -37,10 +40,10 @@
         </ul>
       </nav>
       <ul class="header-contacts">
-          <li><i class="fa fa-map-o"></i> г. Томск, ул. Пролетарская, д.57 к. А</li>
-          <li><i class="fa fa-calendar"></i>  Пн-вс 8.00 - 22.00</li>
+          <li><a href="#map"><i class="fa fa-map-marker"></i> г. Томск, ул. Пролетарская, д.57 к. А</a> </li>
+          <li><i class="fa fa-clock-o"></i>  Пн-вс 8.00 - 22.00</li>
           <li><i class="fa fa-phone"></i>  +7 913 820 94 81</li>
-          <li><i class="fa fa-phone"></i> kb-service@sibmail.com</li>
+          <li><i class="fa fa-envelope-o"></i> kb-service@sibmail.com</li>
       </ul>
       <div class="header-middle">
         <div class="header-logo">
@@ -53,7 +56,7 @@
           <li><a href="#contacts">Контакты</a></li>
           <li><a href="#contacts-comp">Оставить заявку</a></li>
         </ul>
-        <a href="#" class="menu navbar-toggle"><i class="fa fa-bars fa-2x"></i></a>
+        <a href="#" class="menu navbar-toggle"><i class="fa fa-bars fa-3x"></i></a>
       </div>
     </header>
     <main>
@@ -69,28 +72,28 @@
       <div class ="contacts" id="contacts-comp">
         <ul>
           <li>
-            <i class="fa fa-map-o"></i>
+            <i class="fa fa-map-marker"></i>
             <div class="contact-item">
               <p><b>Адрес</b></p>
               <p>г. Томск, ул. Пролетарская, д.57 к. А</p>
             </div>
           </li>
           <li>
-            <i class="fa fa-map-o"></i>
+            <i class="fa fa-clock-o"></i>
             <div class="contact-item">
               <p><b>Email</b></p>
               <p>kb-service@sibmail.com</p>
             </div>
           </li>
           <li>
-            <i class="fa fa-map-o"></i>
+            <i class="fa fa-phone"></i>
             <div class="contact-item">
               <p><b>Часы работы:</b></p>
               <p>Пн-вс 8.00 - 22.00</p>
             </div>
           </li>
           <li>
-            <i class="fa fa-map-o"></i>
+            <i class="fa fa-envelope-o"></i>
             <div class="contact-item">
               <p><b>Телефон</b></p>
               <p>Пн-вс 8.00 - 22.00</p>
@@ -117,6 +120,7 @@
     </main>
     <footer class="footer">
       <p>Copyright © 2017 АЗС-СЕРВИС</p>
+      <a href="#body" class=""><i class="fa fa-angle-up fa-2x" style="color: white; float: right; position:relative; top:-40px; right:40px; margin-bottom:-12px;"></i></a>
     </footer>
 
 
@@ -133,7 +137,14 @@
           });
         }
       </script>
-
+      <script>
+        $(window).scroll(function(){
+          var sticky = $('.header-middle'),
+          scroll=$(window).scrollTop();
+          if (scroll >=40) sticky.addClass('fixed');
+          else sticky.removeClass('fixed');
+        });
+      </script>
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyv5SR7lkO2RJgHNbFXmcLjH8W1MIsaY4&callback=initMap">
       </script>

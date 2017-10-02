@@ -11,6 +11,9 @@ header{
 a {
   text-decoration: none;
 }
+.header-contacts a{
+  color: Gainsboro;
+}
 h1 {
   font-family: 100% 'Merriweather', serif;
   font-size: 3.5rem;
@@ -19,8 +22,10 @@ h1 {
 .fa-bars{
   color: #2e3b4e;
 }
-.fa-map-o{
+.contacts .fa {
   width: 40px;
+  font-size: 24px;
+
 }
 h2{
   font-family: 100% 'Open Sans', sans-serif;
@@ -44,6 +49,7 @@ p{
 .footer p {
   padding-top: 45px;
 }
+
 .logo {
   width: 300px;
   margin: 0;
@@ -122,6 +128,18 @@ p{
 .header-middle {
   height: 130px;
   background-image: url(../img/midle.png);
+
+}
+
+.fixed {
+  width: 100%;
+  position: fixed;
+  z-index: 1000000;
+  top:-1px;
+  background-image: none;
+  background-color: white;
+  opacity: 0.98;
+  box-shadow: 0 0 20px rgba(1,1,1,0.5);
 }
 .promo {
   background-image: url(../img/header-background.png);
@@ -285,24 +303,29 @@ p{
   margin-top: 20px;
   padding: 40px 0;
 }
+.service-item{
 
+}
 .service-item:hover{
    box-shadow: 0 0 10px rgba(1,1,1,0.5);
-   border-color: goldenrod;
+   border-color: #766e41;
 }
 
 .service-item img {
   display: inline-block;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: left;
 }
 .text-item {
   display: inline-block;
 }
 .text-item h3 {
-  width: 70%
+  width: 70%;
 }
+.text-item p{
 
+}
 .price {
   background-image: url(../img/price-background.png);
   background-color: #2e3b4e; /* Цвет фона */
@@ -414,6 +437,11 @@ form input, form textarea {
 
 .form.has-floated-label .field.focus:after {
   width: 100%;
+
+}
+
+.form .text-input:focus, .form .textarea:focus{
+  border-bottom-color: rgba(0, 0, 0, 9);
 }
 
 .form .button {

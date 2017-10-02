@@ -9,7 +9,17 @@
   .form{
     width: 100%;
   }
-
+  .header-contacts{
+    display: none;
+  }
+  .header-contacts li  {
+      width: 100%;
+      text-align: center;
+      font-size: 26px;
+  }
+  .logo {
+    width: 320px;
+  }
 }
 
 
@@ -30,7 +40,7 @@
 
   .menu{
     position: relative;
-    top: 50px;
+    top: 45px;
     margin-right: 5%;
     display: inline-block;
     float: right;
@@ -54,6 +64,9 @@
   .cat-image {
     width: 300px;
   }
+
+
+
 }
 
 
@@ -62,31 +75,19 @@
   h1 {
     font-size: 2.8rem;
   }
-  .logo {
-    width: 320px;
-  }
 
   .promo {
     margin: 0;
     padding-top: 100px;
   }
 
-  .header-contacts li  {
-      text-align: center;
-  }
-  .header-contacts li  {
-      width: 100%;
-      text-align: center;
-  }
   .service-price, .detail-price{
-      min-height: 400px;
-
+    padding-top: 0;
+    min-height: 200px;
   }
+
   .service-price{
     margin-top: 100px;
-  }
-  .header-contacts li  {
-    font-size: 20px;
   }
 
 }

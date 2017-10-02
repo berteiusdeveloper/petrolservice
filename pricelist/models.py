@@ -2,8 +2,8 @@ from django.db import models
 
 class ProductCategory(models.Model):
     item_no = models.IntegerField()
-    title = models.CharField(max_length=300, default='')
-    info = models.CharField(max_length=600, default='', blank=True)
+    title = models.CharField(max_length=300)
+    info = models.CharField(max_length=600, blank=True)
     img = models.ImageField(upload_to='product', blank=True)
     def __str__(self):
         return self.title
