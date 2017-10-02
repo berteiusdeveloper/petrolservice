@@ -22,6 +22,9 @@ h1 {
 .fa-bars{
   color: #2e3b4e;
 }
+.header-middle > a{
+  color: #2e3b4e;
+}
 .contacts .fa {
   width: 40px;
   font-size: 24px;
