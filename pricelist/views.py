@@ -14,14 +14,14 @@ def send_email(request):
     from_email = request.POST.get('from_email', '')
     if subject and message and from_email:
         try:
-            send_mail(subject, message+" from "+from_email, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
+            send_mail(subject, message, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
         except BadHeaderError:
             return HttpResponse('Bad!')
         return HttpResponse('Sucess')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
-        return HttpResponse('Bad.')
+        return HttpResponse('Bad form')
 
 def index(request):
     return render(request, 'pricelist/index.html', {})
