@@ -16,11 +16,13 @@ def send_email(request):
         try:
             send_mail(subject, message, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
         except BadHeaderError:
-            return HttpResponse('Bad!')
-        return HttpResponse('Sucess')
+            return HttpResponse('Error')
+        if request.is_ajax():
+                return HttpResponse('OK')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
+        print('Bad form')
         return HttpResponse('Bad form')
 
 def index(request):

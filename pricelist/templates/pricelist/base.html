@@ -159,14 +159,14 @@
        type:"POST",
        url: '{% url "send_email" %}',
        data: $(this).serialize(),
-       success: function (data) {
-           alert(data);
+
+       success: function() {
+           alert('Success');
        },
-       error: function(data) {
-         alert('Fali');
+       error: function() {
+         alert('Fail');
        }
      });
-
    });
  </script>
   </body>
