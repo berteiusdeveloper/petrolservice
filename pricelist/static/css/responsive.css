@@ -1,3 +1,12 @@
+
+@media screen and (min-width: 2020px){
+  .service-item{
+    width: 30%;
+  }
+}
+
+
+
 @media screen and (max-width: 1280px){
   .contact-form {
     width: 100%

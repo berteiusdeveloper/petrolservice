@@ -6,19 +6,22 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 
 def send_email(request):
+    print(request)
+    print(request.POST)
+    print(request.POST.get('subject', ''))
     subject = request.POST.get('subject', '')
     message = request.POST.get('message', '')
     from_email = request.POST.get('from_email', '')
     if subject and message and from_email:
         try:
-            send_mail(subject, message, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
+            send_mail(subject, message+" from "+from_email, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
         except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return HttpResponseRedirect('../')
+            return HttpResponse('Bad!')
+        return HttpResponse('Sucess')
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
-        return HttpResponse('Make sure all fields are entered and valid.')
+        return HttpResponse('Bad.')
 
 def index(request):
     return render(request, 'pricelist/index.html', {})

@@ -6,7 +6,8 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%} ">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'img/ico.png'%}"  />
   </head>
   <body id="body">
     <script src="{% static 'js/jquery-3.2.1.min.js' %} "></script>
@@ -71,53 +72,53 @@
         <h2 class="header-field">Свяжитесь <span class="about-us-header-decor">с на</span>ми</h2>
       </div>
       <div class="map-contact">
-      <div class ="map" id="map"></div>
-      <div class ="contacts" id="contacts-comp">
-        <ul>
-          <li>
-            <i class="fa fa-map-marker"></i>
-            <div class="contact-item">
-              <p><b>Адрес</b></p>
-              <p>г. Томск, ул. Пролетарская, д.57 к. А</p>
-            </div>
-          </li>
-          <li>
-            <i class="fa fa-clock-o"></i>
-            <div class="contact-item">
-              <p><b>Email</b></p>
-              <p>kb-service@sibmail.com</p>
-            </div>
-          </li>
-          <li>
-            <i class="fa fa-phone"></i>
-            <div class="contact-item">
-              <p><b>Часы работы:</b></p>
-              <p>Пн-вс 8.00 - 22.00</p>
-            </div>
-          </li>
-          <li>
-            <i class="fa fa-envelope-o"></i>
-            <div class="contact-item">
-              <p><b>Телефон</b></p>
-              <p>Пн-вс 8.00 - 22.00</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+        <div class="map" id="map"></div>
 
-      <div class="contact-form">
-        <form class='form' method="POST" action="{% url 'send_email' %}"> {% csrf_token %}
-          <label for="name-field">Имя</label>
-          <input class='text-input' type="text" id="name-field" name="subject"></input>
-          <label for="phone-field">Телефон</label>
-          <input class='text-input' type="text" id="phone-field" name="message"></input>
-          <label for="mail-field">Email</label>
-          <input class='text-input' type="text" id="mail-field" name="from_email"></input>
-          <label for="text-area-field">Сообщение</label>
-          <textarea class='text-input' id="text-area-field" name="message"></textarea>
-          <input class="button form-button"type="submit" value="Отправить"></input>
-        </form>
-    </div>
+        <div class="contacts" id="contacts-comp">
+          <ul class="contacts-ul">
+            <li>
+              <i class="fa fa-map-marker"></i>
+              <div class="contact-item">
+                <p><b>Адрес</b></p>
+                <p>г. Томск, ул. Пролетарская, д.57 к. А</p>
+              </div>
+            </li>
+            <li>
+              <i class="fa fa-clock-o"></i>
+              <div class="contact-item">
+                <p><b>Email</b></p>
+                <p>kb-service@sibmail.com</p>
+              </div>
+            </li>
+            <li>
+              <i class="fa fa-phone"></i>
+              <div class="contact-item">
+                <p><b>Часы работы:</b></p>
+                <p>Пн-вс 8.00 - 22.00</p>
+              </div>
+            </li>
+            <li>
+              <i class="fa fa-envelope-o"></i>
+              <div class="contact-item">
+                <p><b>Телефон</b></p>
+                <p>+7 913 820 94 81</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-form" >
+          <form class='form' method="POST" action="" id="target">
+            {% csrf_token %}
+            <label for="name-field">Имя</label>
+            <input class='text-input' type="text" id="name-field" name="subject"></input>
+            <label for="phone-field">Телефон или Email</label>
+            <input class='text-input' type="text" id="phone-field" name="from_email"></input>
+            <label for="text-area-field">Сообщение</label>
+            <textarea class='text-input' id="text-area-field" name="message"></textarea>
+            <input class="button form-button"type="submit" value="Отправить"></input>
+          </form>
+      </div>
   </div>
 </div>
     </main>
@@ -151,5 +152,22 @@
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyv5SR7lkO2RJgHNbFXmcLjH8W1MIsaY4&callback=initMap">
       </script>
+
+      <script>
+   $("#target").submit(function () {
+     $.ajax({
+       type:"POST",
+       url: '{% url "send_email" %}',
+       data: $(this).serialize(),
+       success: function (data) {
+           alert(data);
+       },
+       error: function(data) {
+          alert("Fail");
+       }
+     });
+
+   });
+ </script>
   </body>
 </html>
