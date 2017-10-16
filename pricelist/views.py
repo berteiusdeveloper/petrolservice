@@ -3,7 +3,7 @@ from .models import Production, Service, ProductCategory, ServiceCategory
 from django.conf import settings
 # Create your views here.
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
 def send_email(request):
     print(request)
@@ -12,16 +12,22 @@ def send_email(request):
     subject = request.POST.get('subject', '')
     message = request.POST.get('message', '')
     from_email = request.POST.get('from_email', '')
-    if subject and message and from_email:
+    print("one")
+    if subject and message:
         try:
+            print("two")
             send_mail(subject, message, settings.EMAIL_HOST_USER, ['berteiusdeveloper@gmail.com'])
+            print("three")
         except BadHeaderError:
-            return HttpResponse('Error')
+            print('WATAFAK')
+            return JsonResponse({"message":"Successfully published"})
         if request.is_ajax():
-                return HttpResponse('OK')
+            print("four")
+            return JsonResponse({"message":"Successfully published"})
     else:
         # In reality we'd use a form class
         # to get proper validation errors.
+        print("five")
         print('Bad form')
         return HttpResponse('Bad form')
 

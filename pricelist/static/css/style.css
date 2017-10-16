@@ -639,3 +639,17 @@ nav ul li a:hover {
   color: #766e41;
   border-bottom: 8px solid #766e41;
 }
+
+
+.flashbox{
+  display: none;
+  color:white;
+  background-color:#4a5f7e;
+  border-radius: 8px;
+  height: 50px;
+  text-align: center;
+  padding-top: 5px;
+  -moz-transition: background-color 0.8s 0.1s ease;
+-o-transition: background-color 0.8s 0.1s ease;
+-webkit-transition: background-color 0.8s 0.1s ease;
+}

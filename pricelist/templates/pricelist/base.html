@@ -3,6 +3,9 @@
 <html lang="ru">
   <head>
     <title>АЗС-СЕРВИС</title>
+    <meta name="keywords" content="АЗС СЕРВИС, АЗС-СЕРВИС, Томск, АЗС СЕРВИС томск, азс в томске, детали для заправок, обслуживание заправок, трк купить, трк, ремонт заправок, ремонт АЗС, осбслуживание АЗС">
+    <meta charset="utf-8">
+    <meta name="description" content="Сервисное обслуживание и ремонт АЗС, продажа ТРК и запасных частей">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/animate.css'%}">
@@ -106,7 +109,7 @@
             </li>
           </ul>
         </div>
-
+          
         <div class="contact-form" >
           <form class='form' method="POST" action="" id="target">
             {% csrf_token %}
@@ -117,6 +120,7 @@
             <label for="text-area-field">Сообщение</label>
             <textarea class='text-input' id="text-area-field" name="message"></textarea>
             <input class="button form-button"type="submit" value="Отправить"></input>
+            <div class="flashbox"><p>Успешно отправлено</p></div>
           </form>
       </div>
   </div>
@@ -161,12 +165,14 @@
        data: $(this).serialize(),
 
        success: function() {
-           alert('Success');
+           $(".flashbox").show();
        },
        error: function() {
          alert('Fail');
        }
+
      });
+     return false;
    });
  </script>
   </body>
