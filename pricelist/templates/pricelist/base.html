@@ -111,7 +111,7 @@
         </div>
           
         <div class="contact-form" >
-          <form class='form' method="POST" action="" id="target">
+          <form class='form' method="POST" action="" id="target" >
             {% csrf_token %}
             <label for="name-field">Имя</label>
             <input class='text-input' type="text" id="name-field" name="subject"></input>
@@ -120,7 +120,7 @@
             <label for="text-area-field">Сообщение</label>
             <textarea class='text-input' id="text-area-field" name="message"></textarea>
             <input class="button form-button"type="submit" value="Отправить"></input>
-            <div class="flashbox"><p>Успешно отправлено</p></div>
+            <div class="flashbox"><p class="flashbox-text"></p></div>
           </form>
       </div>
   </div>
@@ -158,22 +158,48 @@
       </script>
 
       <script>
+          
+
    $("#target").submit(function () {
-     $.ajax({
-       type:"POST",
-       url: '{% url "send_email" %}',
-       data: $(this).serialize(),
+      function validateEmail(email) {
+          var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          var re2 = /^([\+]+)*[0-9\x20\x28\x29\-]{5,20}$/;
+          if(re.test(email) | re2.test(email)){
+            return true;
+          }
+          else{
+            return false;
+          }
+      }
 
-       success: function() {
-           $(".flashbox").show();
-       },
-       error: function() {
-         alert('Fail');
-       }
+      if(validateEmail(document.forms[0].elements.from_email.value)){ 
+       $.ajax({
+         type:"POST",
+         url: '{% url "send_email" %}',
+         data: $(this).serialize(),
 
+         success: function() {
+          $(".flashbox").show();
+          $(".flashbox-text").text("Успешно отправлено");
+             
+         },
+         error: function() {
+          $(".flashbox").show();
+           $(".flashbox-text").text("Произошла ошибка");
+         }
+
+       });
+       return false;
+      }
+      else{
+        $(".flashbox").show();  
+        $(".flashbox-text").text("Номер телефона или Email введен неверно");
+        
+      }
+      return false; 
      });
-     return false;
-   });
+  
+
  </script>
   </body>
 </html>

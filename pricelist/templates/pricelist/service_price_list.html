@@ -10,7 +10,7 @@
       </div>
     <section>
       {% for c in categories %}
-
+      {% if c in list %} 
       <h3 class="product_category">{{c.title}}</h3>
       <table class="service-table">
         <thead>
@@ -23,14 +23,14 @@
            {% for item in price %}
            {% if item.type_s == c %}
            <tr>
-               <td>{{item.title}}</td>
-               <td>{{item.cost}}</td>
-               <td>{{item.cost_weekend}}</td>
+               <td><p class="item_ntc">{{item.title}}</p></td>
+               <td><p class="item_ntc">{{item.cost}}</p></td>
+               <td><p class="item_ntc">{{item.cost_weekend}}</p></td>
            </tr>
            {% endif %}
            {% endfor %}
        </table>
-  
+    {% endif %}
     {% endfor %}
     </section>
 {% endblock %}

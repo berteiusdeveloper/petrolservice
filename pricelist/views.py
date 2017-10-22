@@ -40,11 +40,24 @@ def production_price_list(request):
     #                       WHERE a.id = (select max(id) from production
     #                                     WHERE theme_id = a.theme_id) GROUP BY theme_id''')
     p_categories = ProductCategory.objects.all()
-    context = {'price' : price, 'categories' : p_categories}
+    list=[]
+    for c in p_categories:
+        for item in price:
+            if item.type_p == c:
+                list.append(item.type_p)
+        
+    context = {'price' : price, 'categories' : p_categories, 'list': list}
     return render(request, 'pricelist/production_price_list.html', context)
 
 def service_price_list(request):
     price = Service.objects.all()
     s_categories = ServiceCategory.objects.all()
-    context = {'price' : price, 'categories' : s_categories}
+    list=[]
+    for c in s_categories:
+        for item in price:
+            if item.type_s == c:
+                list.append(item.type_s)
+                
+             
+    context = {'price' : price, 'categories' : s_categories,'list': list}
     return render(request, 'pricelist/service_price_list.html', context)

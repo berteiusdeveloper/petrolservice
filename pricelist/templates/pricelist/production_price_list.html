@@ -11,6 +11,7 @@
       </div>
     <section>
       {% for c in categories %}
+      {% if c in list %} 
       <div class="product_info">
         <div class="head-image">
           <img class="cat-image" src="/media/{{c.img}}" alt="{{c.img}}" >
@@ -32,13 +33,14 @@
            {% for item in price %}
            {% if item.type_p == c %}
            <tr>
-               <td>{{item.item_no}}</td>
-               <td>{{item.title}}</td>
-               <td>{{item.cost}}</td>
+               <td><p class="item_ntc">{{item.item_no}}</p></td>
+               <td><p class="item_ntc">{{item.title}}</p></td>
+               <td><p class="item_ntc">{{item.cost}}</p></td>
            </tr>
            {% endif %}
            {% endfor %}
        </table>
+    {% endif %}
     {% endfor %}
     </section>
 

@@ -653,3 +653,7 @@ nav ul li a:hover {
 -o-transition: background-color 0.8s 0.1s ease;
 -webkit-transition: background-color 0.8s 0.1s ease;
 }
+
+.item_ntc{
+    font-size: 15px;
+  }
