@@ -1,0 +1,1 @@
+web: gunicorn gasservice.wsgi --log-file -
