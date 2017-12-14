@@ -35,11 +35,11 @@ def index(request):
     return render(request, 'pricelist/index.html', {})
 
 def production_price_list(request):
-    price = Production.objects.all()
+    price = Production.objects.all().order_by('-item_no')
     #price2 = Production.objects.raw('''SELECT * FROM production a,
     #                       WHERE a.id = (select max(id) from production
     #                                     WHERE theme_id = a.theme_id) GROUP BY theme_id''')
-    p_categories = ProductCategory.objects.all()
+    p_categories = ProductCategory.objects.all().order_by('-item_no')
     list=[]
     for c in p_categories:
         for item in price:
@@ -51,7 +51,7 @@ def production_price_list(request):
 
 def service_price_list(request):
     price = Service.objects.all()
-    s_categories = ServiceCategory.objects.all()
+    s_categories = ServiceCategory.objects.all().order_by('-item_no')
     list=[]
     for c in s_categories:
         for item in price:
